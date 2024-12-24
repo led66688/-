@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>八号贵金属 - 实时金银价格</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+        }
+        header {
+            background-color: #d4af37;
+            color: white;
+            padding: 10px 0;
+            font-size: 24px;
+        }
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+        th {
+            background-color: #f4b41a;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <header>八号贵金属 - 实时金银价格</header>
+    <table>
+        <thead>
+            <tr>
+                <th>品类</th>
+                <th>回收价 (元/克)</th>
+                <th>销售价 (元/克)</th>
+            </tr>
+        </thead>
+        <tbody id="price-table">
+            <!-- 数据将通过 JavaScript 动态填充 -->
+        </tbody>
+    </table>
+    <script>
+        // 模拟数据
+        const mockData = [
+            { category: '黄金', buyPrice: '400.00', sellPrice: '420.00' },
+            { category: '白银', buyPrice: '5.00', sellPrice: '6.00' }
+        ];
+
+        function updatePrices() {
+            const table = document.getElementById('price-table');
+            table.innerHTML = '';
+            mockData.forEach(item => {
+                const row = `
+                    <tr>
+                        <td>${item.category}</td>
+                        <td>${item.buyPrice}</td>
+                        <td>${item.sellPrice}</td>
+                    </tr>
+                `;
+                table.innerHTML += row;
+            });
+        }
+
+        // 初始化数据
+        updatePrices();
+
+        // 每分钟刷新一次
+        setInterval(updatePrices, 60000);
+    </script>
+</body>
+</html>
